@@ -2,24 +2,33 @@ UtiliKit
 ============
 [![CI Status](http://img.shields.io/travis/BottleRocketStudios/iOS-UtiliKit.svg?style=flat)](https://travis-ci.org/BottleRocketStudios/iOS-UtiliKit)
 [![Version](https://img.shields.io/cocoapods/v/UtiliKit.svg?style=flat)](http://cocoapods.org/pods/UtiliKit)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](https://img.shields.io/cocoapods/l/UtiliKit.svg?style=flat)](http://cocoapods.org/pods/UtiliKit)
 [![Platform](https://img.shields.io/cocoapods/p/UtiliKit.svg?style=flat)](http://cocoapods.org/pods/UtiliKit)
 [![codecov](https://codecov.io/gh/BottleRocketStudios/iOS-UtiliKit/branch/master/graph/badge.svg)](https://codecov.io/gh/BottleRocketStudios/iOS-UtiliKit)
 [![codebeat badge](https://codebeat.co/badges/e47aed79-20ee-4054-b8cd-2bdaceab52dd)](https://codebeat.co/projects/github-com-bottlerocketstudios-ios-utilikit-master)
 
-### Purpose
+## Purpose
+
 This library provides several useful and often common additions for iOS applications. These extensions, protocols, and structs are designed to simplify boilerplate code as well as remove common "Stringly-typed" use cases.
 
-### Key Concepts
-This library is divided into 5 parts.
-* Instantiation - This subspec changes "Stringly-typed" view instantiation, view controller instantiation, and reusable view dequeuing into type-safe function calls.
-* General - This subspec includes extensions for both FileManager and UIView. These simplify getting common URLs and programmatically adding views down to simple variables and function calls.
-* Version - This subspec simplifies the display of version and build numbers.
-* TimelessDate - This subspec is an abstraction away from Date and Calendar. It is primarily designed to be used for simple scheduling and day comparisons in which the time is less important that the actual day.
-* Container - This subspec provides a simple ContainerViewController without any built-in navigation construct.
+## Key Concepts
 
-### Usage
+This library is divided into 7 parts, which are available as CocoaPods subspecs.
+* **Instantiation** - This subspec changes "Stringly-typed" view instantiation, view controller instantiation, and reusable view dequeuing into type-safe function calls.
+* **General** - This subspec includes extensions for both `FileManager` and `UIView`. These simplify getting common URLs and programmatically adding views down to simple variables and function calls.
+* **Version** - This subspec simplifies the display of version and build numbers.
+* **TimelessDate** - This subspec is an abstraction away from `Date` and `Calendar`. It is primarily designed to be used for simple scheduling and day comparisons in which the time is less important that the actual day.
+* **Container** - This subspec provides a simple `ContainerViewController` without any built-in navigation construct.
+* **ActiveLabel** - This subspec provides a `UILabel` subclass that renders gradient "loading" animations while the label's `text` property is set to `nil`.
+* **Obfuscation** - This subspec provides simple routines to remove plaintext passwords or keys from your source code.
+
+## Usage
+
+### Instantiation
+
 #### Reusable Views
+
 Registering and dequeuing cells, collection view supplementary views, table view headers and footers, and annotations is as simple as calling register on their presenting view, and dequeuing them in the collectionView(_:, cellForItemAt:) -> UICollectionViewCell, or equivalent, function.
 
 ``` swift
@@ -90,6 +99,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 ```
 
 #### View Controllers
+
 In order to instantiate a view controller from a storyboard you simply need to create a Storyboard.Identifier for the storyboard and define the return type.
 A simple implementation might look like this:
 
@@ -108,7 +118,37 @@ class ViewController: UIViewController {
 }
 ```
 
-#### Version Numbers
+### General
+
+#### FileManager Extensions
+
+There are several convenience methods provided as an extension on `FileManager`:
+
+```swift
+let documentsDirectory = FileManager.default.documentsDirectory
+let cachesDirectory = FileManager.default.cachesDirectory
+let appSupportDirectory = FileManager.default.applicationSupportDirectory
+let sharedContainerURL = FileManager.default.sharedContainerURL(forSecurityApplicationGroupIdentifier: "com.app.group")
+```
+
+#### UIView Extensions
+
+There are several convenience methods provided as an extension on `UIView`, mostly for easily constraining subviews to their parent view:
+
+```swift
+let myView = UIView(frame: .zero)
+view.addSubview(myView, constrainedToSuperview: true)
+
+let anotherView = UIView(frame: .zero)
+anotherView.translatesAutoresizingMaskIntoConstraints = false
+view.addSubview(anotherView)
+
+let insets = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+anotherView.constrainEdgesToSuperview(with: insets)
+```
+
+### Version Numbers
+
 Getting version numbers into user facing strings only requires a function call. *Note this function throws an error if the provided version config contains an invalid key.
 A simple implementation might look like this:
 
@@ -128,7 +168,8 @@ func printVersions() {
 }
 ```
 
-#### Timeless Dates
+### Timeless Dates
+
 A Timeless Date is a simple abstraction the removes the time from a Date and uses Calendar for calculations. This is especially useful for calendar and travel use cases as seeing how many days away something is often is more important that the number of hours between them / 24.
 
 ``` swift
@@ -149,7 +190,8 @@ func addOneHourTo(date: Date) -> Date {
 }
 ```
 
-#### ContainerViewController
+### ContainerViewController
+
 A solution for managing multiple child view controllers, the ContainerViewController manages the lifecycle of the child controllers. This allows you to focus on the navigational structure of your views as well as the transitions between them.
 
 ``` swift
@@ -171,7 +213,7 @@ let child = ...
 containerViewController.transitionToController(for: child)
 ```
 
-The container also has several delegate callback which can help customize it's behavior. Among them, is a function which returns a UIViewControllerAnimatedTransitioning object.
+The container also has several delegate callbacks which can help customize its behavior. Among them, is a function which returns a UIViewControllerAnimatedTransitioning object.
 
 ``` swift
 func containerViewController(_ container: ContainerViewController, animationControllerForTransitionFrom source: UIViewController, to destination: UIViewController) -> UIViewControllerAnimatedTransitioning? {
@@ -181,17 +223,126 @@ func containerViewController(_ container: ContainerViewController, animationCont
 
     return nil
 }
+``` 
+
+### ActiveLabel
+
+`ActiveLabel` is a `UILabel` subclass that adds horizontal activity indicators to your label while its `text` property is set to `nil`. You can customize this view quite a bit in code or in Interface Builder to fit your specific needs. The purpose of this subclass is to have a visual indication at the label level while you are loading data into labels.
+
+Default Configuration
+``` swift
+let label: ActiveLabel = ActiveLabel()
+```
+![](docs/images/ActiveLabelDefault.gif)
+
+Custom Configuration
+``` swift
+let label: ActiveLabel = ActiveLabel()
+label.estimatedNumberOfLines = 3
+label.finalLineTrailingInset = 100
+```
+![](docs/images/ActiveLabelEdited01.gif)
+
+Custom Configuration using convenience initializer.
+``` swift
+var configuration = ActiveLabelConfiguration.default
+configuration.estimatedNumberOfLines = 3
+configuration.finalLineLength = 100
+configuration.loadingView.animationDuration = 2.0
+configuration.loadingView.animationDelay = 0
+let label: ActiveLabel = ActiveLabel(frame: CGRect(x: 0, y: 0, width: 335, height: 21), configuration: configuration)
+```
+![](docs/images/ActiveLabelEdited02.gif)
+
+Add some color, change line height and spacing.
+``` swift
+let label: ActiveLabel = ActiveLabel()
+label.estimatedNumberOfLines = 3
+label.finalLineTrailingInset = 100
+label.loadingView.color = UIColor(red: 233.0/255.0, green: 231.0/255.0, blue: 237.0/255.0, alpha: 1.0))
+label.loadingView.lineHeight = 16
+label.loadingView.lineVerticalSpacing = 8
+```
+![](docs/images/ActiveLabelEdited03.gif)
+
+When initializing `ActiveLabel` in Storyboards or Xibs you must set the labels text to `nil` in code because IB initializes labels with an empty string value.
+
+When using `ActiveLabel` for snapshot tests you can center the gradient by calling `configureForSnapshotTest()` on your label.
+
+
+### ScrollingPageControl
+
+`ScrollingPageControl` is a view modeled off of (but not a subclass of) Apple's `UIPageControl`. The intent of this class is to allow representation of a large number of pages in a limited space and provide more customization than is possible with `UIPageControl`.
+
+Default Configuration, UIPageControl similarities
+``` swift
+let pageControl: ScrollingPageControl = ScrollingPageControl()
+pageControl.numberOfPages = 30                          // default is 0
+pageControl.currentPage = 14                            // default is 0
+pageControl.hidesForSinglePage = false                  // default
+pageControl.pageIndicatorTintColor = .systemGray        // default
+pageControl.currentPageIndicatorTintColor = .systemBlue // default
+```
+![](docs/images/ScrollingPageControl/ScrollingPageControl-Default.png)
+
+Customize dot layout
+``` swift
+pageControl.mainDotCount = 5                           // default is 3
+pageControl.marginDotCount = 3                         // default is 2
+pageControl.dotSize = CGSize(width: 5.0, height: 10.0) // default is 7.0 x 7.0
+pageControl.dotSpacing = 14.0                          // default is 9.0
+pageControl.minimumDotScale = 0.25                     // default is 0.4
+```
+![](docs/images/ScrollingPageControl/ScrollingPageControl-CustomizedLayout.png)
+
+Responding to ScrollingPageControl interaction
+``` swift
+pageControl.didSetCurrentPage = { [weak self] (index) in
+    self?.scrollToPageAtIndex(index)
+}
+```
+![](docs/images/ScrollingPageControl/ScrollingPageControl-ControlInteraction.gif)
+
+Adding custom page dots
+``` swift
+pageControl.customPageDotAtIndex = { [weak self] (index) in
+    guard self?.pageData[index].isFavorited else { return nil }
+    return FavoriteIconView()
+}
+```
+Usage notes: 
+- Returning `nil` for an `index` in the `customPageDotAtIndex` block will default to the standard page dot at the specified `dotSize` for that index.
+- It's advised that any custom view returned from this block should respond to `tintColorDidChange()` in a way that makes it clear when it is/is not the `currentPage`.
+- It's advised that any custom view returned from this block should take `dotSize` and `dotSpacing` into account to maintain a uniform look and feel.
+- Anytime the data used in this block gets updated after it is initially set, `updateDot(at:)` or `updateDots(at:)` should be called to keep the page control in sync.
+![](docs/images/ScrollingPageControl/ScrollingPageControl-CustomizedPageDot.png)
+
+### ObfuscatedKey
+
+To use an obfuscated key in your code, create one and use the builder variables to encode your key.
+
+``` swift
+let key = ObfuscatedKey().T.h.i.s.underscore.I.s.dash.o.b.f.u.s.c.a.t.e.d.value
 ```
 
-### Example
+## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+To run the example project, clone the repo, open `UtiliKit.xcworkspace`, and run the "UtiliKit-iOSExample" project.
 
-### Requirements
+## Requirements
 
-Requires iOS 9.0 +, Swift 4.0
+* iOS 10.0+
+* Swift 5.0
 
-### Installation - CocoaPods
+## Installation - Swift Package Manager
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/BottleRocketStudios/iOS-UtiliKit.git", from: "1.6.0")
+]
+```
+
+## Installation - CocoaPods
 
 [CocoaPods]: http://cocoapods.org
 
@@ -209,7 +360,17 @@ use_frameworks!
 
 Then run `pod install` with CocoaPods 0.36 or newer.
 
-### Contributing
+## Installation - Carthage
+
+Add the following to your [Cartfile](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#cartfile):
+
+```
+github "BottleRocketStudios/iOS-UtiliKit"
+```
+
+Run `carthage update` and follow the steps as described in Carthage's [README](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application).
+
+## Contributing
 
 See the [CONTRIBUTING] document. Thank you, [contributors]!
 

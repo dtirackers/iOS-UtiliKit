@@ -2,11 +2,131 @@
 
 ##### Enhancements
 
-* None.
+* None
 
 ##### Bug Fixes
 
-* None.
+* None
+
+## 1.7.0 (2020-08-17)
+
+##### Enhancements
+
+* Make it possible to override functions in container, which aid in `ManagedChild` managemet.
+[Will McGinty](https://github.com/willmcginty)
+[#87](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/87)
+
+* Add `postTransitionBehavior` to `ContainerViewController`, automating some common child management scenarios
+[Dimitar Milinski](https://github.com/dmilinski)
+[#88](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/88)
+
+* Switch `removeAllNonVisibleChildren` to `public`
+[Dimitar Milinski](https://github.com/dmilinski)
+[#90](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/90)
+
+* Add `ScrollingPageControl`
+[Nathan Chiu](https://github.com/BR-Nathan-Chiu)
+[#95](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/95)
+
+##### Bug Fixes
+
+* None
+
+
+## 1.6.1 (2019-10-04)
+
+##### Enhancements
+
+* None
+
+##### Bug Fixes
+
+* Fix an issue where the completion handler does not get called when transitioning.
+[Will McGinty](https://github.com/willmcginty)
+[#76](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/76)
+
+* Fix an issue where the transition was mistakenly marked as a failure.
+[Will McGinty](https://github.com/willmcginty)
+[#77](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/77)
+
+* Fix a transitionting issue where appearance callbacks were unbalanced in iOS 13.
+[Will McGinty](https://github.com/willmcginty)
+[#79](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/79)
+
+* Fix an issue where ContainerViewController was not removing source or destination views from the view hierarchy after transitioning
+[Dimitar Milinski](https://github.com/dmilinski)
+[#81](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/81)
+
+## 1.6.0 (2019-08-29)
+
+##### Enhancements
+
+* Added Swift Package Manager support.
+[Brian Miller](https://github.com/jobsismyhomeboy)
+[#64](https://github.com/BottleRocketStudios/iOS-UtiliKit/issues/64)
+
+* Add interactive transitioning and transition coordination to `ContainerViewController`. This change has bumped the deployment target to iOS 10.0+
+[Will McGinty](https://github.com/willmcginty)
+[#63](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/63)
+
+* Added the `Obfuscation` subspec, which includes the `ObfuscatedKey` structure for keys/passwords to ensure that 
+they don't appear in plaintext within the source or binary of your app.
+[Russell Mirabelli](https://github.com/rmirabelli)
+[#67](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/67)
+
+* Updated initial/named view controller example so that the buttons are horizontally centered in the stack view.
+[Tyler Milner](https://github.com/tylermilner)
+[#65](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/65)
+
+* Conform URL to ExpressibleByStringLiteral (e.g. `let url: URL = "www.apple.com"`)
+[Will McGinty](https://github.com/willmcginty)
+[#66](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/66)
+
+* Added Carthage support.
+[Ryan Gant](https://github.com/ganttastic)
+[#68](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/68)
+
+* Updated `README` to include the "ActiveLabel" subspec listed at the top and added code examples for the "General" subspec.
+[Tyler Milner](https://github.com/tylermilner)
+[#71](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/71)
+
+##### Bug Fixes
+
+* None
+
+
+## 1.5.0 (2019-07-11)
+
+##### Enhancements
+
+* Add `ActiveLabel` class to help show activity on a label.
+[Brian Miller](https://github.com/JobsIsMyHomeboy)
+[#55](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/55)
+
+* Add support for `Configurable` types when dequeuing reusable views.
+[Will McGinty](https://github.com/willmcginty)
+[#53](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/58)
+
+##### Bug Fixes
+
+* Fix a bug where completion wasn't always called when transitioning.
+[Will McGinty](https://github.com/willmcginty)
+[#57](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/57)
+
+
+## 1.4.0 (2019-04-30)
+
+##### Enhancements
+
+* Migrate to Swift 5.0.
+[Earl Gaspard](https://github.com/earlgaspard)
+[#53](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/53)
+
+##### Bug Fixes
+
+* Fix an issue where right and bottom insets were being inverted in constraints.
+[Will McGinty](https://github.com/willmcginty)
+[#46](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/50)
 
 
 ## 1.3.5 (2019-01-02)
