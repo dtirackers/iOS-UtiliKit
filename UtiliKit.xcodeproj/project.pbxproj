@@ -83,9 +83,11 @@
 		8698D0292061A3930065AE20 /* WipeTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698D0092061A3930065AE20 /* WipeTransitionAnimator.swift */; };
 		B4A5231A22E6925B00AB1424 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A5231922E6925B00AB1424 /* URL+Extensions.swift */; };
 		B4CCCAEF22D57284001A7A4F /* DefaultContainerTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698CFA620619EAD0065AE20 /* DefaultContainerTransitionAnimator.swift */; };
-		E25E95EF25E73DCD00744262 /* Skeleton.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E296E24C25E73AF4001F641D /* Skeleton.storyboard */; };
-		E25E95F525E73F7E00744262 /* SkeletonViewsExamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E95F425E73F7E00744262 /* SkeletonViewsExamplesViewController.swift */; };
+		E23C597B260AA97700257038 /* SkeletonViewsExamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E95F425E73F7E00744262 /* SkeletonViewsExamplesViewController.swift */; };
+		E23C5981260AA9BB00257038 /* Skeleton.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E296E24C25E73AF4001F641D /* Skeleton.storyboard */; };
 		E25E95FC25E7404800744262 /* UIView+SkeletonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E95F825E73FDC00744262 /* UIView+SkeletonExtensions.swift */; };
+		E2B5B2B2260D7B0F00A14BF6 /* ShimmerGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B5B2B1260D7B0F00A14BF6 /* ShimmerGradientView.swift */; };
+		E2B5B2B6260D7B4E00A14BF6 /* Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B5B2B5260D7B4E00A14BF6 /* Shimmer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -202,6 +204,8 @@
 		E25E95F425E73F7E00744262 /* SkeletonViewsExamplesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonViewsExamplesViewController.swift; sourceTree = "<group>"; };
 		E25E95F825E73FDC00744262 /* UIView+SkeletonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SkeletonExtensions.swift"; sourceTree = "<group>"; };
 		E296E24C25E73AF4001F641D /* Skeleton.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Skeleton.storyboard; sourceTree = "<group>"; };
+		E2B5B2B1260D7B0F00A14BF6 /* ShimmerGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerGradientView.swift; sourceTree = "<group>"; };
+		E2B5B2B5260D7B4E00A14BF6 /* Shimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shimmer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -525,6 +529,8 @@
 			isa = PBXGroup;
 			children = (
 				E25E95F825E73FDC00744262 /* UIView+SkeletonExtensions.swift */,
+				E2B5B2B1260D7B0F00A14BF6 /* ShimmerGradientView.swift */,
+				E2B5B2B5260D7B4E00A14BF6 /* Shimmer.swift */,
 			);
 			path = SkeletionView;
 			sourceTree = "<group>";
@@ -686,7 +692,7 @@
 				8698D0252061A3930065AE20 /* VCTest.storyboard in Resources */,
 				8698D00C2061A3930065AE20 /* Main.storyboard in Resources */,
 				59E8D9A92464720E0016A447 /* ScrollingPageControl.storyboard in Resources */,
-				E25E95EF25E73DCD00744262 /* Skeleton.storyboard in Resources */,
+				E23C5981260AA9BB00257038 /* Skeleton.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -707,6 +713,7 @@
 				B4A5231A22E6925B00AB1424 /* URL+Extensions.swift in Sources */,
 				8698CFC420619EAD0065AE20 /* UICollectionView+Extensions.swift in Sources */,
 				0EC8025C209CE9C90051F732 /* Configurable.swift in Sources */,
+				E2B5B2B6260D7B4E00A14BF6 /* Shimmer.swift in Sources */,
 				8698CFC820619EAD0065AE20 /* TimelessDate.swift in Sources */,
 				8698CFC320619EAD0065AE20 /* StoryboardIdentifiable.swift in Sources */,
 				7D5611BA22E79B4C0017008D /* ObfuscatedKey.swift in Sources */,
@@ -718,6 +725,8 @@
 				5C574BF72264EC10003D1641 /* ActiveLabel.swift in Sources */,
 				5C574BF92264EC3C003D1641 /* ActiveLabelViewController.swift in Sources */,
 				1D419DBD21235EE100B62D91 /* ManagedChild.swift in Sources */,
+				E23C597B260AA97700257038 /* SkeletonViewsExamplesViewController.swift in Sources */,
+				E2B5B2B2260D7B0F00A14BF6 /* ShimmerGradientView.swift in Sources */,
 				59E8D9A4246361DB0016A447 /* ScrollingPageControlSetupViewController.swift in Sources */,
 				0EFAFEA121FA0FA2005B2B16 /* ContainerPercentDrivenInteractiveTransitioner.swift in Sources */,
 				0EFAFE9A21F81659005B2B16 /* ContainerViewControllerTransitionCoordinator.swift in Sources */,
@@ -764,7 +773,6 @@
 				8698D01E2061A3930065AE20 /* XibViewsTableController.swift in Sources */,
 				8698D0162061A3930065AE20 /* MapViewController.swift in Sources */,
 				8698D0102061A3930065AE20 /* ProgrammaticViewsCollectionController.swift in Sources */,
-				E25E95F525E73F7E00744262 /* SkeletonViewsExamplesViewController.swift in Sources */,
 				8698D00A2061A3930065AE20 /* AppDelegate.swift in Sources */,
 				8698D0182061A3930065AE20 /* XibFooterView.swift in Sources */,
 				8698D0112061A3930065AE20 /* ContainerExampleViewController.swift in Sources */,

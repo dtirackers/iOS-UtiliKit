@@ -8,47 +8,52 @@
 
 import UIKit
 
+public class ShimmerStackView: UIStackView, Shimmer {
+    public var shimmerView: ShimmerGradientView?
+}
+
 class SkeletonViewsExamplesViewController: UIViewController {
 
+
+    @IBOutlet var containerView: ShimmerStackView!
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var contentViews: [UIView]!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        applySkeletions()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        applySkeletions()
-    }
-
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        applySkeletions()
+        applySkeletons()
+        applyShimmer()
     }
 
-    @IBAction func applySkeletions(_ sender: Any) {
-        applySkeletions()
+    @IBAction func applySkeletons(_ sender: Any) {
+        applySkeletons()
     }
 
-    @IBAction func removeSkeletions(_ sender: Any) {
+    @IBAction func removeSkeletons(_ sender: Any) {
         loadContent()
+    }
+    @IBAction func applyShimmerAction(_ sender: Any) {
+        applyShimmer()
+    }
+    @IBAction func removeShimmerAction(_ sender: Any) {
+        containerView.removeShimmer()
     }
 }
 
 // MARK: - Private
 private extension SkeletonViewsExamplesViewController {
 
-    func applySkeletions() {
+    func applySkeletons() {
         imageView.applySkeleton()
         nameLabel.applySkeleton()
         dateLabel.applySkeleton()
         contentViews.forEach { $0.applySkeleton() }
+    }
+
+    func applyShimmer() {
+        containerView.applyShimmer(with: ShimmerAnimation.init(with: 0.75))
     }
 
     func loadContent() {
