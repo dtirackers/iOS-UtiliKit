@@ -58,4 +58,8 @@ s.subspec 'Obfuscation' do |obfuscation|
 obfuscation.source_files = 'Sources/UtiliKit/Obfuscation/*.swift'
 end
 
+s.subspec 'SkeletonView' do |skeletonView|
+skeletonView.source_files = 'Sources/UtiliKit/SkeletonView/*.swift'
+end
+
 end
