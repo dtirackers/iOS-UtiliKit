@@ -370,7 +370,7 @@
 		8698CFA120619EAD0065AE20 /* UtiliKit */ = {
 			isa = PBXGroup;
 			children = (
-				E296E24625E73821001F641D /* SkeletionView */,
+				E296E24625E73821001F641D /* SkeletonView */,
 				5C574BF52264EBF8003D1641 /* ActiveLabel */,
 				8698CFA220619EAD0065AE20 /* Container */,
 				8698CFA720619EAD0065AE20 /* General */,
@@ -525,14 +525,14 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		E296E24625E73821001F641D /* SkeletionView */ = {
+		E296E24625E73821001F641D /* SkeletonView */ = {
 			isa = PBXGroup;
 			children = (
 				E25E95F825E73FDC00744262 /* UIView+SkeletonExtensions.swift */,
 				E2B5B2B1260D7B0F00A14BF6 /* ShimmerGradientView.swift */,
 				E2B5B2B5260D7B4E00A14BF6 /* Shimmer.swift */,
 			);
-			path = SkeletionView;
+			path = SkeletonView;
 			sourceTree = "<group>";
 		};
 		E296E24925E73A3B001F641D /* Skeleton */ = {
