@@ -54,7 +54,7 @@ public struct ShimmerGradient {
     let direction: ShimmerDirection
 
     static let shimmerGradient = ShimmerGradient(start: UIColor.white.withAlphaComponent(0.0),
-                                                        middle: UIColor.white.withAlphaComponent(0.2),
+                                                        middle: UIColor.white.withAlphaComponent(0.3),
                                                         end: UIColor.white.withAlphaComponent(0.0),
                                                         direction: .diagonal)
 
