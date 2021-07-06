@@ -104,6 +104,6 @@ public struct ShimmerAnimation {
         self.key = "opacityShimmer"
         self.duration = 2.2
         self.timingFunction = CAMediaTimingFunction(name: .easeIn)
-        self.shimmerGradient = ShimmerGradient.shimmerGradient.withShimmerOpacity(opacity)
+        self.shimmerGradient = ShimmerGradient.shimmerGradient.withShimmerOpacity(opacity, with: .diagonal)
     }
 }

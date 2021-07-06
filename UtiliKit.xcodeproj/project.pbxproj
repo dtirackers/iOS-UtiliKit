@@ -86,6 +86,7 @@
 		E23C597B260AA97700257038 /* SkeletonViewsExamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E95F425E73F7E00744262 /* SkeletonViewsExamplesViewController.swift */; };
 		E23C5981260AA9BB00257038 /* Skeleton.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E296E24C25E73AF4001F641D /* Skeleton.storyboard */; };
 		E25E95FC25E7404800744262 /* UIView+SkeletonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E95F825E73FDC00744262 /* UIView+SkeletonExtensions.swift */; };
+		E2A307F826916D2C006E20AD /* ShimmerGradientViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A307F726916D2C006E20AD /* ShimmerGradientViewTest.swift */; };
 		E2B5B2B2260D7B0F00A14BF6 /* ShimmerGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B5B2B1260D7B0F00A14BF6 /* ShimmerGradientView.swift */; };
 		E2B5B2B6260D7B4E00A14BF6 /* Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B5B2B5260D7B4E00A14BF6 /* Shimmer.swift */; };
 /* End PBXBuildFile section */
@@ -204,6 +205,7 @@
 		E25E95F425E73F7E00744262 /* SkeletonViewsExamplesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonViewsExamplesViewController.swift; sourceTree = "<group>"; };
 		E25E95F825E73FDC00744262 /* UIView+SkeletonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SkeletonExtensions.swift"; sourceTree = "<group>"; };
 		E296E24C25E73AF4001F641D /* Skeleton.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Skeleton.storyboard; sourceTree = "<group>"; };
+		E2A307F726916D2C006E20AD /* ShimmerGradientViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerGradientViewTest.swift; sourceTree = "<group>"; };
 		E2B5B2B1260D7B0F00A14BF6 /* ShimmerGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerGradientView.swift; sourceTree = "<group>"; };
 		E2B5B2B5260D7B4E00A14BF6 /* Shimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shimmer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -322,6 +324,7 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				E2A307F626916AE0006E20AD /* SkeletonView */,
 				869826271FE87BFA0024B73D /* DateTests.swift */,
 				7D5611B722E79AD40017008D /* ObfuscationTests.swift */,
 				869826261FE87BFA0024B73D /* UtiliKitTests.swift */,
@@ -544,6 +547,14 @@
 			path = Skeleton;
 			sourceTree = "<group>";
 		};
+		E2A307F626916AE0006E20AD /* SkeletonView */ = {
+			isa = PBXGroup;
+			children = (
+				E2A307F726916D2C006E20AD /* ShimmerGradientViewTest.swift */,
+			);
+			path = SkeletonView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -745,6 +756,7 @@
 			files = (
 				5C574BFB2264ED61003D1641 /* ActiveLabelTests.swift in Sources */,
 				0ED9476420FD473700B642AB /* ContainerTests.swift in Sources */,
+				E2A307F826916D2C006E20AD /* ShimmerGradientViewTest.swift in Sources */,
 				59637C5C24772F7B00ECC484 /* ScrollingPageControlTests.swift in Sources */,
 				8677315720601D1A00C54343 /* UtiliKitTests.swift in Sources */,
 				8677315820601D1A00C54343 /* DateTests.swift in Sources */,

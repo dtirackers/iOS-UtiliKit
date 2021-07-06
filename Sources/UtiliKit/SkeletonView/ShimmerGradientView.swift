@@ -7,7 +7,7 @@
 
 import UIKit
 
-public enum ShimmerDirection {
+public enum ShimmerDirection: Equatable {
     case vertical
     case horizontal
     case custom(startPoint: CGPoint, endPoint: CGPoint)
@@ -41,7 +41,7 @@ public enum ShimmerDirection {
     /// - Parameter ratio: unit coordinate space (0-1)
     /// - Returns: A `custom` Direction
     public static func vertical(withPivot ratio: CGFloat) -> ShimmerDirection {
-        .custom(startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 0, y: ratio))
+        .custom(startPoint: .zero, endPoint: CGPoint(x: 0, y: ratio))
     }
 }
 
@@ -54,9 +54,9 @@ public struct ShimmerGradient {
     let direction: ShimmerDirection
 
     static let shimmerGradient = ShimmerGradient(start: UIColor.white.withAlphaComponent(0.0),
-                                                        middle: UIColor.white.withAlphaComponent(0.3),
-                                                        end: UIColor.white.withAlphaComponent(0.0),
-                                                        direction: .diagonal)
+                                                 middle: UIColor.white.withAlphaComponent(0.3),
+                                                 end: UIColor.white.withAlphaComponent(0.0),
+                                                 direction: .diagonal)
 
     // MARK: - Initializers
     ///
@@ -65,7 +65,7 @@ public struct ShimmerGradient {
     ///   - middle: Optional color of the gradient. If used it is a transition color between `start` and `end`
     ///   - end: Final color of the gradient 
     ///   - direction: direction of gradient default value is `.vertical`
-    init(start: UIColor, middle: UIColor? = nil, end: UIColor, direction: ShimmerDirection = .vertical) {
+    init(start: UIColor = UIColor.white.withAlphaComponent(0.0), middle: UIColor? = nil, end: UIColor = UIColor.white.withAlphaComponent(0.0), direction: ShimmerDirection = .vertical) {
         self.start = start
         self.middle = middle
         self.end = end
@@ -75,11 +75,9 @@ public struct ShimmerGradient {
     /// Set a custom `opacity` for the middle white color in the default ShimmerGradient
     /// - Parameter opacity: The `alpha` value for the middle white color
     /// - Returns: a `ShimmerGradient`
-    public func withShimmerOpacity(_ opacity: CGFloat) -> ShimmerGradient {
-        ShimmerGradient(start: UIColor.white.withAlphaComponent(0.0),
-                        middle: UIColor.white.withAlphaComponent(opacity),
-                        end: UIColor.white.withAlphaComponent(0.0),
-                        direction: .diagonal)
+    public func withShimmerOpacity(_ opacity: CGFloat, with direction: ShimmerDirection) -> ShimmerGradient {
+        ShimmerGradient(middle: UIColor.white.withAlphaComponent(opacity),
+                        direction: direction)
     }
 }
 
