@@ -10,7 +10,7 @@ import Foundation
 public extension Date {
     
     /// Current date and time.
-    static var now: Date { return Date() }
+    // static var now: Date { return Date() }
     
     /// Date and time of Midnight January 1, 2001.
     static var reference2001: Date { return Date(timeIntervalSinceReferenceDate: 0) }
